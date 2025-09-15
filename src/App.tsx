@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Flame, Sword, Shield, Crown, Zap, Image, Palette, Users, Clock, MapPin, Phone, Mail, Calendar, Star } from 'lucide-react';
+import { Flame, Sword, Crown, Zap, Image, Palette, MapPin, Phone, Calendar, X } from 'lucide-react';
+import REGISTRATION_QR from './registration-qr.png';
 
 interface Event {
   id: string;
@@ -20,8 +21,8 @@ const events: Event[] = [
     motto: 'Winter is Coming',
     description: 'Navigate through complex data structures and algorithms. Only the sharpest minds survive the frozen challenges.',
     coordinators: [
-      { name: 'Jon Snow', phone: '+91 98765 43210' },
-      { name: 'Arya Stark', phone: '+91 98765 43211' }
+      { name: 'Akash Kumar Singh O', phone: '+91 73972 71303' },
+      { name: 'Madhan Kumar P', phone: '+91 93427 45299' }
     ],
     color: 'from-blue-900 to-slate-800',
     icon: <Sword className="w-8 h-8" />
@@ -33,8 +34,8 @@ const events: Event[] = [
     motto: 'Hear Me Roar!',
     description: 'Golden coding challenges that separate the lions from the lambs. Show your programming prowess.',
     coordinators: [
-      { name: 'Tyrion Lannister', phone: '+91 98765 43212' },
-      { name: 'Jaime Lannister', phone: '+91 98765 43213' }
+      { name: 'Mohammed Tanveer K', phone: '+91 99520 16905' },
+      { name: 'Nithishwar J', phone: '+91 63696 06909' }
     ],
     color: 'from-yellow-600 to-red-800',
     icon: <Crown className="w-8 h-8" />
@@ -94,25 +95,183 @@ const events: Event[] = [
 ];
 
 const coreTeam = [
-  { role: 'President', name: 'Akash Kumar Singh O', contact: '+91 98765 43200' },
-  { role: 'Vice President', name: 'Poorani S', contact: '+91 98765 43201' },
-  { role: 'Treasurer', name: 'Madhan Kumar P', contact: '+91 98765 43202' },
-  { role: 'Student Coordinator', name: 'Coordinator 1', contact: '+91 98765 43203' },
-  { role: 'Student Coordinator', name: 'Coordinator 2', contact: '+91 98765 43204' },
+  { role: 'President', name: 'Akash Kumar Singh O', contact: '+91 73972 71303' },
+  { role: 'Vice President', name: 'Poorani S', contact: '+91 63814 48766' },
+  { role: 'Treasurer', name: 'Madhan Kumar P', contact: '+91 93427 45299' },
 ];
 
-const schedule = [
-  { time: '9:00 AM', event: 'Inauguration Ceremony', description: 'Opening ceremony with keynote speech' },
-  { time: '10:00 AM', event: 'Data Maze Begins', description: 'House Stark challenges commence' },
-  { time: '11:30 AM', event: 'Codex Competition', description: 'House Lannister coding battle' },
-  { time: '1:00 PM', event: 'Lunch Break', description: 'Feast fit for kings and queens' },
-  { time: '2:00 PM', event: 'Slide Storm', description: 'House Targaryen presentation fury' },
-  { time: '3:30 PM', event: 'Proto Spark', description: 'House Baratheon innovation storm' },
-  { time: '5:00 PM', event: 'Awards Ceremony', description: 'Crowning the champions of each house' },
-];
+// Google Form placeholder – replace with actual link later
+const GOOGLE_FORM_URL = 'https://forms.google.com/your-registration-form-url';
+
+// Detailed rules per event (expand with more events as needed)
+const eventRules: Record<string, any> = {
+  'data-maze': {
+    meta: {
+      teamSize: '1–3 members (open to all departments).',
+      duration: '2 hrs 30 mins.',
+      tools: 'Python / R / Jupyter / Colab, Power BI / Tableau, AI coding assistants.'
+    },
+    tasks: [
+      'Clean dataset (handle missing values, duplicates, noise).',
+      'Create insightful visualizations.',
+      'Build & evaluate at least one ML model.',
+      'Present workflow, results, and insights.'
+    ],
+    guidelines: [
+      '4 datasets provided; each team gets one randomly.',
+      'No external datasets or pre-trained models allowed.',
+      'Internet use limited to documentation/coding support.',
+      'Maintain discipline; misconduct leads to disqualification.'
+    ],
+    judging: [
+      'Data Cleaning – 20%',
+      'Visualization – 25%',
+      'Model Accuracy – 30%',
+      'Presentation – 15%',
+      'Time Management – 10%'
+    ],
+    deliverables: [
+      'Cleaned dataset',
+      'Visualizations (report/notebook/Power BI)',
+      'Model code + accuracy',
+      'Final presentation slides'
+    ]
+  },
+  'slide-storm': {
+    meta: {
+      teamSize: '1–3 members (open to all departments).',
+      duration: '4–5 minutes presentation + Q&A.',
+      tools: 'PPT/Keynote/Google Slides; laser pointer optional.'
+    },
+    tasks: [],
+    guidelines: [
+      'Paper must be original and based on technical/research topics.',
+      'Clearly present problem statement, methodology, and conclusion.',
+      'Presentation should be clear, concise, and structured.'
+    ],
+    judging: [
+      'Presentation – 40%',
+      'Team Coordination – 20%',
+      'PPT Quality – 30%',
+      'Q&A – 10%'
+    ],
+    deliverables: [],
+    rules: [
+      'Stick to allotted time.',
+      'Maintain discipline; jury’s decision is final.',
+      'Arguments with jury lead to disqualification.'
+    ]
+  },
+  'pixel-prompt': {
+    meta: {
+      teamSize: 'Solo (1 participant only).',
+      duration: '50 mins (Setup – 5, Prompt – 15, Image – 25, Submission – 5).',
+      tools: 'Any AI image generation tool (Internet allowed for tool usage only).'
+    },
+    tasks: [
+      'Prompt creation → Image generation → Documentation → Submission.'
+    ],
+    guidelines: [
+      'One keyword will be assigned randomly.',
+      'Tools: Any AI image generation tool (Internet allowed for tool usage only).'
+    ],
+    restrictions: [
+      'Prompts must be original.',
+      'No prompt generators, pre-written templates, or copying.',
+      'Internet use strictly for AI tool access.',
+      'Misconduct or plagiarism leads to disqualification.'
+    ],
+    judging: [
+      'Accuracy to Keyword – 40%',
+      'Image Quality & Details – 30%',
+      'Prompt Length & Complexity – 15%',
+      'Time Management – 15%'
+    ],
+    deliverables: [
+      'Original Prompt (Word/PDF)',
+      'Generated Image (JPG/PNG)',
+      'Keyword Documentation',
+      'Optional Explanation',
+      'Note: Jury’s decision is final.'
+    ]
+  },
+  'proto-spark': {
+    meta: {
+      teamSize: '1–4 members (cross-department teams allowed).',
+      duration: 'Setup time: 15 mins | Event: 6 hours (Full Day).',
+      tools: 'Open to any tech stack. Teams responsible for their own hardware; internet provided.'
+    },
+    categories: [
+      'Software (Web, Mobile, AI/ML, Games)',
+      'Hardware/IoT (Robotics, Automation, Sensors)',
+      'Web & Digital Solutions (E-commerce, APIs, CMS)',
+      'Emerging Tech (Blockchain, AR/VR, Cybersecurity, Cloud)'
+    ],
+    guidelines: [
+      'Projects must be at least 70% complete & functional.',
+      'Source code + documentation required.',
+      'Presentation: 8–10 mins + 5 mins Q&A + Live demo.',
+      'Teams responsible for own hardware; internet provided.'
+    ],
+    judging: [
+      'Innovation & Creativity – 25',
+      'Technical Implementation – 25',
+      'Functionality & Usability – 20',
+      'Problem Solving – 15',
+      'Presentation & Communication – 10',
+      'Documentation – 5'
+    ],
+    awards: [
+      'Best Overall Project (1st, 2nd, 3rd + Cash Prizes)',
+      'Special Awards: Best Innovation, Best Technical Implementation, Best UI/UX, Best Hardware, People’s Choice, Best Presentation.'
+    ],
+    disqualification: [
+      'Plagiarism / copied projects.',
+      'Non-functional or incomplete demos.',
+      'Misconduct, false ownership, or offensive content.',
+      'Failure to present or provide source code.'
+    ],
+    deliverables: [
+      'Before Event (48 hrs): Abstract, team details, tech stack, setup needs.',
+      'On Event Day: Source code, documentation, slides, (optional demo video/report).'
+    ],
+    schedule: [
+      '9–10 AM: Registration & Setup',
+      '10–12 PM: Round 1 Judging',
+      '1–2 PM: Round 2 Judging',
+      '2–5 PM: Public Exhibition',
+      '5–6 PM: Award Ceremony'
+    ],
+    notes: ['Jury’s decision is final. Projects may be featured online.']
+  },
+  'design-sphere': {
+    meta: {
+      teamSize: '1–3 members (open to all departments)',
+      duration: '4–5 mins presentation + Q&A',
+      tools: 'Any design tools (Figma, Adobe XD, Sketch, etc.)'
+    },
+    guidelines: [
+      'Designs must be original & prepared beforehand.',
+      'Clearly define problem statement & design approach.',
+      'Presentation should be clear, functional, and innovative.'
+    ],
+    judging: [
+      'Design – 50%',
+      'Functionality – 20%',
+      'Presentation – 20%',
+      'Q&A – 10%'
+    ],
+    rules: [
+      'Stick to allotted time.',
+      'Maintain discipline; jury’s decision is final.',
+      'Plagiarism/copying will lead to disqualification.'
+    ]
+  }
+};
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode] = useState(true);
+  const [route, setRoute] = useState<string>(window.location.hash.replace('#/', '') || 'home');
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -140,7 +299,15 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  const toggleTheme = () => setDarkMode(!darkMode);
+  // Simple hash routing
+  useEffect(() => {
+    const onHashChange = () => {
+      const path = window.location.hash.replace('#/', '') || 'home';
+      setRoute(path);
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
   
   const triggerDragonAnimation = () => {
     setDragonAnimation(true);
@@ -151,14 +318,282 @@ function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const registerUrl = "https://forms.google.com/your-registration-form-url"; // Replace with actual Google Forms URL
+  const goToRegister = () => {
+    window.location.hash = '/register';
+  };
+  const goToEvent = (id: string) => {
+    window.location.hash = `/event/${id}`;
+  };
+
+  const EventDetailPage = ({ eventId }: { eventId: string }) => {
+    const event = events.find(e => e.id === eventId);
+    if (!event) {
+      return (
+        <div className="min-h-screen bg-gradient-to-b from-slate-900 via-red-950 to-black text-gold-400 pt-24">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h1 className="text-3xl font-bold mb-6">Event not found</h1>
+            <button onClick={() => (window.location.hash = '/events')} className="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold">← Back to Events</button>
+          </div>
+        </div>
+      );
+    }
+
+    const specific = eventRules[eventId];
+    const fallbackRules: string[] = [
+      'Bring a valid college ID card and registration confirmation.',
+      'Team composition and size as specified by coordinators.',
+      'Use of internet/resources subject to proctor approval.',
+      'Judges’ decisions are final; malpractice leads to disqualification.',
+      'Report 15 minutes before the event start time.'
+    ];
+
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-red-950 to-black text-gold-400 pt-24">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="mb-8">
+            <button onClick={() => (window.location.hash = '/home#events')} className="px-4 py-2 rounded border border-red-900/40 text-gold-300 hover:bg-gold-400 hover:text-black transition-colors">← Back</button>
+          </div>
+
+          <div className="relative overflow-hidden rounded-lg border border-red-900/40 bg-black/40 p-6 mb-8">
+            <div className="absolute inset-0 opacity-15 pointer-events-none" />
+            <div className="relative z-10">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-full bg-gold-400/20">{event.icon}</div>
+                  <h1 className="text-3xl md:text-4xl font-bold text-red-400">{event.name}</h1>
+                </div>
+                <div className="text-gold-300">{event.house}</div>
+              </div>
+              <div className="italic text-gold-400 mb-4">"{event.motto}"</div>
+              <p className="text-gold-200">{event.description}</p>
+            </div>
+          </div>
+
+          <div className="rounded-lg border border-red-900/40 bg-black/40 p-6">
+            <h2 className="text-2xl font-bold text-gold-300 mb-4">Rules and Regulations</h2>
+            {!specific && (
+              <ul className="list-disc pl-6 space-y-2 text-gold-200">
+                {fallbackRules.map((r, i) => (
+                  <li key={i}>{r}</li>
+                ))}
+              </ul>
+            )}
+
+            {specific && (
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-4 text-gold-200">
+                  <div>
+                    <div className="font-semibold text-gold-300">Team Size</div>
+                    <div>{specific.meta.teamSize}</div>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gold-300">Duration</div>
+                    <div>{specific.meta.duration}</div>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gold-300">Tools Allowed</div>
+                    <div>{specific.meta.tools}</div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-red-400 mb-2">Tasks</h3>
+                  <ul className="list-disc pl-6 space-y-1 text-gold-200">
+                    {specific.tasks?.map((t: string, i: number) => (
+                      <li key={i}>{t}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-red-400 mb-2">Guidelines</h3>
+                  <ul className="list-disc pl-6 space-y-1 text-gold-200">
+                    {specific.guidelines?.map((g: string, i: number) => (
+                      <li key={i}>{g}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {specific.restrictions && (
+                  <div>
+                    <h3 className="text-xl font-semibold text-red-400 mb-2">Restrictions</h3>
+                    <ul className="list-disc pl-6 space-y-1 text-gold-200">
+                      {specific.restrictions.map((r: string, i: number) => (
+                        <li key={i}>{r}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div>
+                  <h3 className="text-xl font-semibold text-red-400 mb-2">Judging Criteria</h3>
+                  <ul className="list-disc pl-6 space-y-1 text-gold-200">
+                    {specific.judging?.map((j: string, i: number) => (
+                      <li key={i}>{j}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-red-400 mb-2">Deliverables</h3>
+                  <ul className="list-disc pl-6 space-y-1 text-gold-200">
+                    {specific.deliverables?.map((d: string, i: number) => (
+                      <li key={i}>{d}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {specific.awards && (
+                  <div>
+                    <h3 className="text-xl font-semibold text-red-400 mb-2">Awards</h3>
+                    <ul className="list-disc pl-6 space-y-1 text-gold-200">
+                      {specific.awards.map((a: string, i: number) => (
+                        <li key={i}>{a}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {specific.disqualification && (
+                  <div>
+                    <h3 className="text-xl font-semibold text-red-400 mb-2">Disqualification</h3>
+                    <ul className="list-disc pl-6 space-y-1 text-gold-200">
+                      {specific.disqualification.map((d: string, i: number) => (
+                        <li key={i}>{d}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {specific.schedule && (
+                  <div>
+                    <h3 className="text-xl font-semibold text-red-400 mb-2">Schedule</h3>
+                    <ul className="list-disc pl-6 space-y-1 text-gold-200">
+                      {specific.schedule.map((s: string, i: number) => (
+                        <li key={i}>{s}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {specific.notes && (
+                  <div className="text-gold-300 text-sm">{specific.notes.join(' ')}</div>
+                )}
+              </div>
+            )}
+
+            <div className="mt-8 flex items-center justify-between flex-wrap gap-4">
+              <div className="text-sm text-gold-300">For queries, contact the coordinators listed on the event card.</div>
+              <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold">Join the House</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const RegistrationPage = () => {
+    const [showDescriptions, setShowDescriptions] = useState(false);
+    // Persist open state to avoid accidental closes due to remounts
+    useEffect(() => {
+      const saved = sessionStorage.getItem('dracarys_desc_open');
+      if (saved === 'true') setShowDescriptions(true);
+    }, []);
+    useEffect(() => {
+      sessionStorage.setItem('dracarys_desc_open', showDescriptions ? 'true' : 'false');
+    }, [showDescriptions]);
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-red-950 to-black text-gold-400 pt-24">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h1 className="text-center text-5xl md:text-6xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 to-red-600" style={{ fontFamily: 'serif' }}>
+            REGISTRATION
+          </h1>
+
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div className="mx-auto w-[260px]">
+              <div className="rounded-2xl p-5 bg-black border-2 border-red-900/50 shadow-glow-red">
+                <img
+                  src={REGISTRATION_QR}
+                  alt="Registration QR"
+                  className="w-full h-auto rounded-lg bg-white"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              </div>
+              <p className="text-center mt-3 text-gold-300">Scan to register</p>
+            </div>
+
+            <div>
+              <p className="text-gold-200 leading-relaxed">
+                Use the QR to register for DRACARYS 2025. Each participant can choose two Technical
+                Events and two Non-Technical Events. Fill your personal details correctly and upload any
+                required proof if asked. Ensure selections are final before submission to secure your spot.
+              </p>
+              <p className="mt-4 text-red-400">
+                Note: Transport will not be provided. Food will be provided for all participants.
+              </p>
+              <p className="mt-4 text-gold-300">
+                Can't scan the QR? <a href="https://forms.gle/i5Y99Fpq8ao64hNa8" target="_blank" rel="noopener noreferrer" className="text-red-400 underline">Click here to register online</a>
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10">
+            {!showDescriptions && (
+              <button
+                onClick={() => setShowDescriptions(true)}
+                aria-expanded={showDescriptions}
+                className="w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg bg-black/50 border border-red-900/40 hover:border-gold-400/60 transition-colors"
+              >
+                <span className="text-xl">▾</span>
+                <span className="font-semibold">View event descriptions</span>
+              </button>
+            )}
+            {showDescriptions && (
+              <div className="mt-4 rounded-lg bg-black/40 border border-red-900/40">
+                <div className="flex items-center justify-between px-4 py-3 border-b border-red-900/40">
+                  <div className="font-semibold">Event descriptions</div>
+                  <button aria-label="Close descriptions" onClick={() => setShowDescriptions(false)} className="p-1 hover:text-red-400">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+                <div className="p-4 grid md:grid-cols-2 gap-6">
+                  {events.map((e) => (
+                    <div key={e.id} className="p-5 rounded-lg bg-black/30 border border-red-900/40">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="text-red-400 font-bold text-xl">{e.name}</h3>
+                        <div className="text-gold-300 text-sm">{e.house}</div>
+                      </div>
+                      <p className="text-gold-200 text-sm">{e.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="text-center mt-12">
+            <button onClick={() => (window.location.hash = '/home')} className="px-8 py-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold">
+              ← Back to Home
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  if (route === 'register') {
+    return <RegistrationPage />;
+  }
+  if (route.startsWith('event/')) {
+    const eventId = route.split('/')[1] || '';
+    return <EventDetailPage eventId={eventId} />;
+  }
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${
-      darkMode 
-        ? 'bg-gradient-to-b from-slate-900 via-red-950 to-black text-gold-400' 
-        : 'bg-gradient-to-b from-amber-50 via-red-50 to-amber-100 text-slate-800'
-    }`}>
+    <div className={`min-h-screen transition-colors duration-500 bg-gradient-to-b from-slate-900 via-red-950 to-black text-gold-400`}>
       
       {/* Dragon Animation Overlay */}
       {dragonAnimation && (
@@ -173,58 +608,51 @@ function App() {
       )}
 
       {/* Header */}
-      <header className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        darkMode ? 'bg-black/80 backdrop-blur-md border-b border-red-900/30' : 'bg-white/80 backdrop-blur-md border-b border-amber-200'
-      }`}>
+      <header className={`fixed top-0 w-full z-40 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-red-900/30`}>
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <button 
               onClick={triggerDragonAnimation}
               className="hover:scale-110 transition-transform duration-300"
             >
-              <Flame className={`w-8 h-8 ${darkMode ? 'text-red-500' : 'text-red-600'} hover:text-yellow-500 transition-colors`} />
+              <Flame className={`w-8 h-8 text-red-500 hover:text-yellow-500 transition-colors`} />
             </button>
-            <h1 className={`text-2xl font-bold ${darkMode ? 'text-gold-400' : 'text-slate-800'}`} style={{ fontFamily: 'serif' }}>
+            <h1 className={`text-2xl font-bold text-gold-400`} style={{ fontFamily: 'serif' }}>
               DRACARYS 2025
             </h1>
           </div>
           
           <nav className="hidden md:flex space-x-8">
-            {['about', 'events', 'schedule', 'contact'].map((section) => (
+            {['about', 'events', 'contact'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`capitalize hover:text-red-400 transition-colors font-semibold ${
-                  darkMode ? 'text-gold-300 hover:text-red-400' : 'text-slate-700 hover:text-red-600'
-                }`}
+                className={`capitalize hover:text-red-400 transition-colors font-semibold text-gold-300 hover:text-red-400`}
               >
                 {section}
               </button>
             ))}
           </nav>
 
-          <button
-            onClick={toggleTheme}
-            className={`p-2 rounded-full transition-all duration-300 hover:scale-110 ${
-              darkMode ? 'bg-gold-400/20 text-gold-400' : 'bg-slate-200 text-slate-600'
-            }`}
-          >
-            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${
-        darkMode ? 'bg-gradient-to-br from-black via-red-950 to-slate-900' : 'bg-gradient-to-br from-amber-100 via-red-100 to-yellow-50'
-      }`}>
+      <section className={`relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-red-950 to-slate-900`}>
         
+        {/* Background Image */}
+        <img
+          src="https://wallup.net/wp-content/uploads/2016/05/27/289928-Game_of_Thrones-House_Targaryen-dragon-sigils-red.jpg"
+          alt="House Targaryen backdrop"
+          className="absolute inset-0 w-full h-full object-cover opacity-25"
+        />
+
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className={`absolute w-1 h-1 ${darkMode ? 'bg-red-500' : 'bg-amber-600'} rounded-full animate-pulse`}
+              className={`absolute w-1 h-1 bg-red-500 rounded-full animate-pulse`}
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -236,33 +664,26 @@ function App() {
         </div>
 
         <div className="text-center z-10 px-4 max-w-4xl mx-auto">
-          <h1 className={`text-6xl md:text-8xl font-bold mb-6 ${
-            darkMode ? 'text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 to-red-600' 
-            : 'text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-amber-600 to-red-700'
-          }`} style={{ fontFamily: 'serif' }}>
+          <h1 className={`text-6xl md:text-8xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 to-red-600`} style={{ fontFamily: 'serif' }}>
             DRACARYS 2025
           </h1>
           
-          <h2 className={`text-2xl md:text-4xl mb-8 font-semibold ${
-            darkMode ? 'text-gold-300' : 'text-slate-700'
-          }`}>
-            Fire and Blood Meets Innovation
+          <h2 className={`text-2xl md:text-4xl mb-8 font-semibold text-gold-300`}>
+            A Fire Can't Kill a Dragon
           </h2>
 
           {/* Countdown Timer */}
           <div className="mb-12">
-            <h3 className={`text-xl mb-6 ${darkMode ? 'text-gold-400' : 'text-slate-600'}`}>
+            <h3 className={`text-xl mb-6 text-gold-400`}>
               The Great War Begins In:
             </h3>
             <div className="grid grid-cols-4 gap-4 max-w-lg mx-auto">
               {Object.entries(timeLeft).map(([unit, value]) => (
-                <div key={unit} className={`${
-                  darkMode ? 'bg-black/50 border-red-900/50' : 'bg-white/50 border-amber-300'
-                } border-2 rounded-lg p-4 backdrop-blur-sm`}>
-                  <div className={`text-3xl font-bold ${darkMode ? 'text-red-400' : 'text-red-600'}`}>
+                <div key={unit} className={`bg-black/50 border-red-900/50 border-2 rounded-lg p-4 backdrop-blur-sm`}>
+                  <div className={`text-3xl font-bold text-red-400`}>
                     {value}
                   </div>
-                  <div className={`text-sm capitalize ${darkMode ? 'text-gold-300' : 'text-slate-600'}`}>
+                  <div className={`text-sm capitalize text-gold-300`}>
                     {unit}
                   </div>
                 </div>
@@ -272,24 +693,18 @@ function App() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a
-              href={registerUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={goToRegister}
               className={`px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 transform ${
-                darkMode 
-                  ? 'bg-gradient-to-r from-red-600 to-red-800 text-white hover:from-red-500 hover:to-red-700 shadow-lg shadow-red-900/50' 
-                  : 'bg-gradient-to-r from-red-500 to-red-700 text-white hover:from-red-400 hover:to-red-600 shadow-lg shadow-red-500/50'
+                'bg-gradient-to-r from-red-600 to-red-800 text-white hover:from-red-500 hover:to-red-700 shadow-lg shadow-red-900/50'
               }`}
             >
               🔥 Join the War - Register Now
-            </a>
+            </button>
             <button
               onClick={() => scrollToSection('events')}
               className={`px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 transform border-2 ${
-                darkMode 
-                  ? 'border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-black' 
-                  : 'border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white'
+                'border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-black' 
               }`}
             >
               ⚔️ Explore Events
@@ -299,57 +714,44 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className={`py-20 ${
-        darkMode ? 'bg-gradient-to-r from-slate-900 to-red-950' : 'bg-gradient-to-r from-amber-50 to-red-50'
-      }`}>
+      <section id="about" className={`py-20 bg-gradient-to-r from-slate-900 to-red-950`}>
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className={`text-4xl md:text-6xl font-bold text-center mb-16 ${
             darkMode ? 'text-gold-400' : 'text-slate-800'
           }`} style={{ fontFamily: 'serif' }}>
-            The Great Houses Unite
+            Department of <br /> Artificial Intelligence & Data Science
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <h3 className={`text-2xl md:text-3xl font-bold mb-6 ${
-                darkMode ? 'text-red-400' : 'text-red-600'
-              }`}>
-                Department of Artificial Intelligence & Data Science
-              </h3>
-              <p className={`text-lg leading-relaxed mb-6 ${
-                darkMode ? 'text-gold-200' : 'text-slate-700'
-              }`}>
+              <p className={`text-lg leading-relaxed mb-6 text-gold-200`}>
                 In the realm of technology, where data flows like rivers and algorithms reign supreme, 
                 we gather the greatest minds to forge the future. DRACARYS 2025 is not merely a symposium—it is 
                 a convergence of innovation, creativity, and collaboration.
               </p>
-              <p className={`text-lg leading-relaxed ${
-                darkMode ? 'text-gold-200' : 'text-slate-700'
-              }`}>
+              <p className={`text-lg leading-relaxed text-gold-200`}>
                 Like the great houses of Westeros, each event challenges different aspects of your skills, 
                 testing your mettle in the fires of competition and emerging stronger through fellowship.
               </p>
             </div>
-            <div className={`${
-              darkMode ? 'bg-black/30 border-red-900/50' : 'bg-white/30 border-amber-300'
-            } border-2 rounded-lg p-8 backdrop-blur-sm`}>
+            <div className={`bg-black/30 border-red-900/50 border-2 rounded-lg p-8 backdrop-blur-sm`}>
               <h4 className={`text-xl font-bold mb-4 ${darkMode ? 'text-gold-400' : 'text-slate-800'}`}>
                 The Small Council
               </h4>
               <div className="space-y-4">
                 {coreTeam.map((member, index) => (
                   <div key={index} className={`flex justify-between items-center p-3 rounded ${
-                    darkMode ? 'bg-red-900/20' : 'bg-amber-100/50'
+                    'bg-red-900/20'
                   }`}>
                     <div>
-                      <div className={`font-semibold ${darkMode ? 'text-gold-300' : 'text-slate-800'}`}>
+                      <div className={`font-semibold text-gold-300`}>
                         {member.name}
                       </div>
-                      <div className={`text-sm ${darkMode ? 'text-gold-400' : 'text-slate-600'}`}>
+                      <div className={`text-sm text-gold-400`}>
                         {member.role}
                       </div>
                     </div>
-                    <div className={`text-sm ${darkMode ? 'text-red-400' : 'text-red-600'}`}>
+                    <div className={`text-sm text-red-400`}>
                       {member.contact}
                     </div>
                   </div>
@@ -361,12 +763,10 @@ function App() {
       </section>
 
       {/* Events Section */}
-      <section id="events" className={`py-20 ${
-        darkMode ? 'bg-gradient-to-b from-black to-slate-900' : 'bg-gradient-to-b from-white to-amber-50'
-      }`}>
+      <section id="events" className={`py-20 bg-gradient-to-b from-black to-slate-900`}>
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className={`text-4xl md:text-6xl font-bold text-center mb-16 ${
-            darkMode ? 'text-gold-400' : 'text-slate-800'
+            'text-gold-400'
           }`} style={{ fontFamily: 'serif' }}>
             The Six Great Houses
           </h2>
@@ -376,57 +776,53 @@ function App() {
               <div
                 key={event.id}
                 className={`group relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-105 transform ${
-                  darkMode ? 'bg-black/50 border border-red-900/30 hover:border-gold-400/50' : 'bg-white/50 border border-amber-200 hover:border-red-400/50'
+                  'bg-black/50 border border-red-900/30 hover:border-gold-400/50'
                 } backdrop-blur-sm hover:shadow-2xl`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${event.color} opacity-20 group-hover:opacity-30 transition-opacity`}></div>
                 
                 <div className="relative p-6 z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 rounded-full ${darkMode ? 'bg-gold-400/20' : 'bg-amber-200/50'}`}>
+                    <div className={`p-3 rounded-full bg-gold-400/20`}>
                       {event.icon}
                     </div>
-                    <div className={`text-right text-sm ${darkMode ? 'text-gold-300' : 'text-slate-600'}`}>
+                    <div className={`text-right text-sm text-gold-300`}>
                       {event.house}
                     </div>
                   </div>
                   
-                  <h3 className={`text-2xl font-bold mb-2 ${darkMode ? 'text-red-400' : 'text-red-600'}`}>
+                  <h3 className={`text-2xl font-bold mb-2 text-red-400`}>
                     {event.name}
                   </h3>
                   
-                  <p className={`text-sm font-semibold mb-3 italic ${darkMode ? 'text-gold-400' : 'text-amber-600'}`}>
+                  <p className={`text-sm font-semibold mb-3 italic text-gold-400`}>
                     "{event.motto}"
                   </p>
                   
-                  <p className={`text-sm mb-4 leading-relaxed ${darkMode ? 'text-gold-200' : 'text-slate-700'}`}>
+                  <p className={`text-sm mb-4 leading-relaxed text-gold-200`}>
                     {event.description}
                   </p>
                   
                   <div className="mb-4">
-                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-gold-300' : 'text-slate-800'}`}>
+                    <h4 className={`font-semibold mb-2 text-gold-300`}>
                       Coordinators:
                     </h4>
                     {event.coordinators.map((coordinator, index) => (
-                      <div key={index} className={`text-sm flex justify-between ${darkMode ? 'text-gold-200' : 'text-slate-600'}`}>
+                      <div key={index} className={`text-sm flex justify-between text-gold-200`}>
                         <span>{coordinator.name}</span>
                         <span className="font-mono">{coordinator.phone}</span>
                       </div>
                     ))}
                   </div>
                   
-                  <a
-                    href={registerUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => goToEvent(event.id)}
                     className={`w-full block text-center py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 transform ${
-                      darkMode 
-                        ? 'bg-red-600 text-white hover:bg-red-500' 
-                        : 'bg-red-500 text-white hover:bg-red-400'
+                      'bg-red-600 text-white hover:bg-red-500' 
                     }`}
                   >
                     Join This House
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -434,85 +830,41 @@ function App() {
         </div>
       </section>
 
-      {/* Schedule Section */}
-      <section id="schedule" className={`py-20 ${
-        darkMode ? 'bg-gradient-to-r from-red-950 to-black' : 'bg-gradient-to-r from-red-50 to-amber-50'
-      }`}>
-        <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className={`text-4xl md:text-6xl font-bold text-center mb-16 ${
-            darkMode ? 'text-gold-400' : 'text-slate-800'
-          }`} style={{ fontFamily: 'serif' }}>
-            The Battle Timeline
-          </h2>
-          
-          <div className={`relative ${
-            darkMode ? 'bg-black/30 border-red-900/50' : 'bg-white/30 border-amber-300'
-          } border-2 rounded-lg p-8 backdrop-blur-sm`}>
-            <div className="space-y-8">
-              {schedule.map((item, index) => (
-                <div key={index} className="flex items-start space-x-6 group">
-                  <div className={`flex-shrink-0 w-20 text-center ${
-                    darkMode ? 'text-red-400' : 'text-red-600'
-                  } font-bold text-lg`}>
-                    {item.time}
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className={`text-xl font-bold mb-2 ${
-                      darkMode ? 'text-gold-300' : 'text-slate-800'
-                    } group-hover:text-red-500 transition-colors`}>
-                      {item.event}
-                    </h3>
-                    <p className={`${darkMode ? 'text-gold-200' : 'text-slate-600'}`}>
-                      {item.description}
-                    </p>
-                  </div>
-                  <div className={`w-4 h-4 rounded-full ${
-                    darkMode ? 'bg-red-500' : 'bg-red-400'
-                  } group-hover:scale-125 transition-transform`}></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Schedule Section removed per request */}
 
       {/* Contact Section */}
-      <section id="contact" className={`py-20 ${
-        darkMode ? 'bg-gradient-to-b from-slate-900 to-black' : 'bg-gradient-to-b from-amber-50 to-white'
-      }`}>
+      <section id="contact" className={`py-20 bg-gradient-to-b from-slate-900 to-black`}>
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className={`text-4xl md:text-6xl font-bold text-center mb-16 ${
-            darkMode ? 'text-gold-400' : 'text-slate-800'
+            'text-gold-400'
           }`} style={{ fontFamily: 'serif' }}>
             Summon the Ravens
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12">
-            <div className={`${
-              darkMode ? 'bg-black/30 border-red-900/50' : 'bg-white/30 border-amber-300'
-            } border-2 rounded-lg p-8 backdrop-blur-sm`}>
-              <h3 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-red-400' : 'text-red-600'}`}>
+            <div className={`bg-black/30 border-red-900/50 border-2 rounded-lg p-8 backdrop-blur-sm`}>
+              <h3 className={`text-2xl font-bold mb-6 text-red-400`}>
                 The Citadel
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <MapPin className={`w-6 h-6 ${darkMode ? 'text-gold-400' : 'text-amber-600'}`} />
+                  <MapPin className={`w-6 h-6 text-gold-400`} />
                   <div>
-                    <div className={`font-semibold ${darkMode ? 'text-gold-300' : 'text-slate-800'}`}>
+                    <div className={`font-semibold text-gold-300`}>
                       Department of Artificial Intelligence & Data Science
                     </div>
-                    <div className={`${darkMode ? 'text-gold-200' : 'text-slate-600'}`}>
+                    <div className={`text-gold-200`}>
                       [Your College Name], [City]
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Calendar className={`w-6 h-6 ${darkMode ? 'text-gold-400' : 'text-amber-600'}`} />
+                  <Calendar className={`w-6 h-6 text-gold-400`} />
                   <div>
-                    <div className={`font-semibold ${darkMode ? 'text-gold-300' : 'text-slate-800'}`}>
+                    <div className={`font-semibold text-gold-300`}>
                       October 11, 2025
                     </div>
-                    <div className={`${darkMode ? 'text-gold-200' : 'text-slate-600'}`}>
+                    <div className={`text-gold-200`}>
                       The day of reckoning arrives
                     </div>
                   </div>
@@ -520,21 +872,19 @@ function App() {
               </div>
             </div>
 
-            <div className={`${
-              darkMode ? 'bg-black/30 border-red-900/50' : 'bg-white/30 border-amber-300'
-            } border-2 rounded-lg p-8 backdrop-blur-sm`}>
-              <h3 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-red-400' : 'text-red-600'}`}>
+            <div className={`bg-black/30 border-red-900/50 border-2 rounded-lg p-8 backdrop-blur-sm`}>
+              <h3 className={`text-2xl font-bold mb-6 text-red-400`}>
                 The Maesters
               </h3>
               <div className="space-y-4">
                 {coreTeam.slice(0, 3).map((member, index) => (
                   <div key={index} className="flex items-center space-x-4">
-                    <Phone className={`w-5 h-5 ${darkMode ? 'text-gold-400' : 'text-amber-600'}`} />
+                    <Phone className={`w-5 h-5 text-gold-400`} />
                     <div>
-                      <div className={`font-semibold ${darkMode ? 'text-gold-300' : 'text-slate-800'}`}>
+                      <div className={`font-semibold text-gold-300`}>
                         {member.name} ({member.role})
                       </div>
-                      <div className={`${darkMode ? 'text-gold-200' : 'text-slate-600'}`}>
+                      <div className={`text-gold-200`}>
                         {member.contact}
                       </div>
                     </div>
@@ -546,19 +896,15 @@ function App() {
 
           {/* Final CTA */}
           <div className="text-center mt-16">
-            <a
-              href={registerUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={goToRegister}
               className={`inline-block px-12 py-6 rounded-lg font-bold text-xl transition-all duration-300 hover:scale-105 transform ${
-                darkMode 
-                  ? 'bg-gradient-to-r from-red-600 to-red-800 text-white hover:from-red-500 hover:to-red-700 shadow-lg shadow-red-900/50' 
-                  : 'bg-gradient-to-r from-red-500 to-red-700 text-white hover:from-red-400 hover:to-red-600 shadow-lg shadow-red-500/50'
+                'bg-gradient-to-r from-red-600 to-red-800 text-white hover:from-red-500 hover:to-red-700 shadow-lg shadow-red-900/50' 
               }`}
             >
               🐉 Claim Your Throne - Register Now
-            </a>
-            <p className={`mt-4 text-sm ${darkMode ? 'text-gold-300' : 'text-slate-600'}`}>
+            </button>
+            <p className={`mt-4 text-sm text-gold-300`}>
               "When you play the game of innovation, you win or you learn."
             </p>
           </div>
@@ -566,9 +912,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className={`py-8 text-center ${
-        darkMode ? 'bg-black border-t border-red-900/30 text-gold-400' : 'bg-white border-t border-amber-200 text-slate-600'
-      }`}>
+      <footer className={`py-8 text-center bg-black border-t border-red-900/30 text-gold-400`}>
         <p className="text-sm">
           © 2025 DRACARYS - Department of Artificial Intelligence & Data Science. 
           <span className="italic"> "Fire cannot kill a dragon." </span>
