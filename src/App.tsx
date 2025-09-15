@@ -47,8 +47,8 @@ const events: Event[] = [
     motto: 'Fire and Blood',
     description: 'Present with the fury of dragons. Burn through presentations with passion and power.',
     coordinators: [
-      { name: 'Daenerys Targaryen', phone: '+91 98765 43214' },
-      { name: 'Viserys Targaryen', phone: '+91 98765 43215' }
+      { name: 'Shabnam D', phone: '+91 90801 34371' },
+      { name: 'Poorani S', phone: '+91 63814 48766' }
     ],
     color: 'from-red-900 to-black',
     icon: <Flame className="w-8 h-8" />
@@ -60,8 +60,8 @@ const events: Event[] = [
     motto: 'Ours is the Fury',
     description: 'Forge prototypes with the strength of storms. Innovation meets determination.',
     coordinators: [
-      { name: 'Robert Baratheon', phone: '+91 98765 43216' },
-      { name: 'Stannis Baratheon', phone: '+91 98765 43217' }
+      { name: 'Sanjai Karthikeyan S', phone: '+91 63796 09338' },
+      { name: 'Yeshwanth B', phone: '+91 79046 50040' }
     ],
     color: 'from-yellow-500 to-orange-800',
     icon: <Zap className="w-8 h-8" />
@@ -73,8 +73,8 @@ const events: Event[] = [
     motto: 'What is Dead May Never Die',
     description: 'Dive deep into AI prompting like the depths of the Iron Islands. Master the art of communication with machines.',
     coordinators: [
-      { name: 'Theon Greyjoy', phone: '+91 98765 43218' },
-      { name: 'Yara Greyjoy', phone: '+91 98765 43219' }
+      { name: 'Poorna Lakshmi S', phone: '+91 99629 01694' },
+      { name: 'Harini S', phone: '+91 90031 96951' }
     ],
     color: 'from-teal-800 to-slate-900',
     icon: <Image className="w-8 h-8" />
@@ -86,8 +86,8 @@ const events: Event[] = [
     motto: 'Growing Strong',
     description: 'Bloom with creativity in design challenges. Beauty and functionality intertwined like roses.',
     coordinators: [
-      { name: 'Margaery Tyrell', phone: '+91 98765 43220' },
-      { name: 'Loras Tyrell', phone: '+91 98765 43221' }
+      { name: 'Kamalesh S', phone: '+91 93420 97741' },
+      { name: 'Rithika Joshi B', phone: '+91 97917 69420' }
     ],
     color: 'from-green-700 to-yellow-600',
     icon: <Palette className="w-8 h-8" />
@@ -854,7 +854,7 @@ function App() {
                       Department of Artificial Intelligence & Data Science
                     </div>
                     <div className={`text-gold-200`}>
-                      [Your College Name], [City]
+                      [Gojan School of Business and Technology], [Edapalayam, Redhills]
                     </div>
                   </div>
                 </div>
@@ -912,11 +912,50 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className={`py-8 text-center bg-black border-t border-red-900/30 text-gold-400`}>
-        <p className="text-sm">
-          © 2025 DRACARYS - Department of Artificial Intelligence & Data Science. 
-          <span className="italic"> "Fire cannot kill a dragon." </span>
-        </p>
+      <footer className={`py-10 bg-black border-top border-red-900/30 text-gold-400`}>
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex items-center justify-center gap-3 md:gap-5">
+            {/* Left emblem */}
+            <div className="flex-shrink-0 w-20 h-20 md:w-28 md:h-28 rounded-full bg-black/60 border border-red-900/40 overflow-hidden flex items-center justify-center">
+              <img
+                src="/gojan-logo.png"
+                alt="Gojan logo"
+                className="w-full h-full object-contain"
+                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+              />
+            </div>
+
+            <div className="text-center">
+              <h3 className="text-lg md:text-2xl font-extrabold tracking-wide text-gold-200">
+                GOJAN SCHOOL OF BUSINESS AND TECHNOLOGY
+              </h3>
+              <div className="mt-2 text-gold-300 text-sm leading-relaxed">
+                Approved by A.I.C.T.E., New Delhi & Affiliated to Anna University, Chennai
+              </div>
+              <div className="text-gold-300 text-sm leading-relaxed">
+                NAAC Accredited Institution Recognized by UGC u/s 2(f) & 12(B) of the UGC Act
+              </div>
+              <div className="text-gold-300 text-sm leading-relaxed">
+                Gojan College Road, Edapalayam, Redhills, Chennai – 600 052.
+              </div>
+            </div>
+
+            {/* Right badge */}
+            <div className="flex-shrink-0 w-20 h-20 md:w-28 md:h-28 rounded-full bg-black/60 border border-red-900/40 overflow-hidden flex items-center justify-center">
+              <img
+                src="/gojan-20years.png"
+                alt="20 Years of Excellence"
+                className="w-full h-full object-contain"
+                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+              />
+            </div>
+          </div>
+
+          <div className="h-px w-full bg-red-900/40 my-6"></div>
+          <p className="text-center text-xs text-gold-400">
+            © 2025 DRACARYS – Department of Artificial Intelligence & Data Science
+          </p>
+        </div>
       </footer>
     </div>
   );
