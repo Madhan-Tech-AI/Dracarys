@@ -642,7 +642,7 @@ function App() {
         
         {/* Background Image */}
         <img
-          src="https://i.pinimg.com/736x/fc/1b/18/fc1b1801d93c123ce4e5c2af5fdcc268.jpg"
+          src="https://i.pinimg.com/736x/79/25/f1/7925f1aca5714ecec2660268712cc3f5.jpg"
           alt="House Targaryen backdrop"
           className="absolute inset-0 w-full h-full object-cover opacity-25"
         />
