@@ -642,7 +642,7 @@ function App() {
         
         {/* Background Image */}
         <img
-          src="https://wallup.net/wp-content/uploads/2016/05/27/289928-Game_of_Thrones-House_Targaryen-dragon-sigils-red.jpg"
+          src="https://i.pinimg.com/736x/fc/1b/18/fc1b1801d93c123ce4e5c2af5fdcc268.jpg"
           alt="House Targaryen backdrop"
           className="absolute inset-0 w-full h-full object-cover opacity-25"
         />
