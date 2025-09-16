@@ -47,8 +47,8 @@ const events: Event[] = [
     motto: 'Fire and Blood',
     description: 'Present with the fury of dragons. Burn through presentations with passion and power.',
     coordinators: [
-      { name: 'Shabnam D', phone: '+91 90801 34371' },
-      { name: 'Poorani S', phone: '+91 63814 48766' }
+      { name: 'Shabnam D', phone: '+91 73972 71303' },
+      { name: 'Poorani S', phone: '+91 93427 45299' }
     ],
     color: 'from-red-900 to-black',
     icon: <Flame className="w-8 h-8" />
@@ -73,8 +73,8 @@ const events: Event[] = [
     motto: 'What is Dead May Never Die',
     description: 'Dive deep into AI prompting like the depths of the Iron Islands. Master the art of communication with machines.',
     coordinators: [
-      { name: 'Poorna Lakshmi S', phone: '+91 99629 01694' },
-      { name: 'Harini S', phone: '+91 90031 96951' }
+      { name: 'Poorna Lakshmi S', phone: '+91 93427 45299' },
+      { name: 'Harini S', phone: '+91 73972 71303' }
     ],
     color: 'from-teal-800 to-slate-900',
     icon: <Image className="w-8 h-8" />
@@ -87,7 +87,7 @@ const events: Event[] = [
     description: 'Bloom with creativity in design challenges. Beauty and functionality intertwined like roses.',
     coordinators: [
       { name: 'Kamalesh S', phone: '+91 93420 97741' },
-      { name: 'Rithika Joshi B', phone: '+91 97917 69420' }
+      { name: 'Rithika Joshi B', phone: '+91 93427 45299' }
     ],
     color: 'from-green-700 to-yellow-600',
     icon: <Palette className="w-8 h-8" />
