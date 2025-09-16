@@ -532,7 +532,7 @@ function App() {
                 required proof if asked. Ensure selections are final before submission to secure your spot.
               </p>
               <p className="mt-4 text-red-400">
-                Note: Transport will not be provided. Food will be provided for all participants.
+                Note: Transport will be provided. Food will be provided for all participants.
               </p>
               <p className="mt-4 text-gold-300">
                 Can't scan the QR? <a href="https://forms.gle/i5Y99Fpq8ao64hNa8" target="_blank" rel="noopener noreferrer" className="text-red-400 underline">Click here to register online</a>
@@ -669,7 +669,7 @@ function App() {
           </h1>
           
           <h2 className={`text-2xl md:text-4xl mb-8 font-semibold text-gold-300`}>
-            A Fire Can't Kill a Dragon
+            When you play the game of thrones, you win or you die
           </h2>
 
           {/* Countdown Timer */}
@@ -905,7 +905,7 @@ function App() {
               🐉 Claim Your Throne - Register Now
             </button>
             <p className={`mt-4 text-sm text-gold-300`}>
-              "When you play the game of innovation, you win or you learn."
+              "A Fire cannot kill a dragon."
             </p>
           </div>
         </div>
