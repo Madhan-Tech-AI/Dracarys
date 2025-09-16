@@ -669,7 +669,7 @@ function App() {
           </h1>
           
           <h2 className={`text-2xl md:text-4xl mb-8 font-semibold text-gold-300`}>
-            When you play the game of thrones, you win or you die
+            When you play the game of thrones <br/> you win or you die
           </h2>
 
           {/* Countdown Timer */}
