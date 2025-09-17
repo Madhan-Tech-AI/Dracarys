@@ -101,7 +101,7 @@ const coreTeam = [
 ];
 
 // Google Form placeholder – replace with actual link later
-const GOOGLE_FORM_URL = 'https://forms.google.com/your-registration-form-url';
+const GOOGLE_FORM_URL = 'https://forms.gle/f6CKNjFFS2vQgrbU6';
 
 // Detailed rules per event (expand with more events as needed)
 const eventRules: Record<string, any> = {
